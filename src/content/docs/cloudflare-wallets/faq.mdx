@@ -1,0 +1,88 @@
+---
+title: FAQ
+pcx_content_type: faq
+description: Answers to common questions about reserving a Cloudflare Wallets handle, what a reservation includes, and what is published at cloudflare.pay.
+products:
+  - cloudflare-wallets
+sidebar:
+  order: 5
+head:
+  - tag: title
+    content: Cloudflare Wallets FAQ
+---
+
+## Cost of a reservation
+
+Reserving a wallet handle is free. Cloudflare does not ask for a payment method, and no charge is added to your account.
+
+## Plan requirements
+
+Handle reservation is open on every Cloudflare plan, including Free. You need a Cloudflare account, and nothing else.
+
+## What a reservation includes
+
+Reserving a handle holds the name against your Cloudflare account and registers the account to be notified when Cloudflare Wallets becomes available.
+
+It does not create a wallet. There is no balance, no funding, no address, and no way to send or receive money. Cloudflare Wallets is not yet available to use.
+
+## Changing a handle
+
+Handles are allocated first come, first served, and a reservation is permanent. Cloudflare does not change a handle after it is reserved, including after a rebrand or a change of name.
+
+## Releasing a handle
+
+Cloudflare does not release a reserved handle back to the pool, and a handle you hold cannot be made available to another account.
+
+Revoking the connected application and deleting your Cloudflare account do not release a handle either. For more information, refer to [Actions that do not release a handle](/cloudflare-wallets/wallet-handles/#actions-that-do-not-release-a-handle).
+
+## Moving a handle to another account
+
+Cloudflare does not transfer a handle between accounts, and does not combine handles held by several accounts onto one account. A handle stays with the Cloudflare account that reserved it.
+
+## Handles that match a brand or trademark
+
+Reserving a handle does not grant trademark rights or ownership of a name. Trademark holders, or their legally authorized representatives, can report a reserved handle through the [Cloudflare abuse form](https://abuse.cloudflare.com/).
+
+For the information a trademark report must contain, refer to [Complaint types](/fundamentals/reference/report-abuse/complaint-types/).
+
+## Number of handles per account
+
+Each Cloudflare account can reserve one handle. If your account already holds one, `cloudflare.pay` reports the existing handle instead of reserving a second.
+
+## Information published at your handle page
+
+A reserved handle publishes a page at `HANDLE.cloudflare.pay` that shows only the handle itself.
+
+Cloudflare does not publish the account name, account ID, email address, or any other account detail on that page, and does not publish which account holds a reserved handle.
+
+## Legitimacy of the cloudflare.pay domain
+
+`cloudflare.pay` is operated by Cloudflare. It is a separate domain from `cloudflare.com`, which is why some people report it as a phishing site.
+
+You are never asked for your Cloudflare password on `cloudflare.pay`. Reserving a handle redirects you to `dash.cloudflare.com` to sign in and authorize a read-only application. For the checks to make before you authorize anything, refer to [Reserve a wallet handle](/cloudflare-wallets/reserve-a-wallet-handle/).
+
+## Access granted to the reservation site
+
+The application reads your user details, your account memberships, and your account settings. It cannot change your configuration, and it has no access to your zones, billing, or payment methods.
+
+You can review the authorization in the Cloudflare dashboard under **Manage Account** > **Access Management** > **Connected Applications**.
+
+## Capitalization of a handle
+
+Handles are not case-sensitive. Cloudflare stores and displays every handle in lowercase, so `Example` and `example` are the same handle. Capitalization is not part of a handle.
+
+## Handles rejected for containing an ordinary word
+
+Cloudflare filters handles that contain reserved words or offensive terms, and both filters match on substrings. An ordinary word or a personal name that happens to contain a filtered term can be rejected.
+
+For the full rules, refer to [Wallet handle requirements](/cloudflare-wallets/wallet-handle-requirements/).
+
+## Errors during the reservation flow
+
+The reservation flow uses a short-lived session that expires a few minutes after you start it. If you see a session or state error, return to [cloudflare.pay](https://cloudflare.pay/) and start again.
+
+The flow also needs cookies from `cloudflare.pay` and a redirect back from `dash.cloudflare.com`. If sign-in fails repeatedly, retry in a browser session that allows cookies and does not block redirects.
+
+## Agent identifiers
+
+The [Cloudflare Wallets announcement](https://blog.cloudflare.com/wallets/) describes giving individual agents their own identifiers beneath an account handle. Handle reservation covers the account handle only.

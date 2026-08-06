@@ -1,0 +1,59 @@
+---
+title: Wallet handle requirements
+pcx_content_type: reference
+description: Length, character, and reserved name rules that determine whether a Cloudflare Wallets handle can be reserved, and why a handle may be unavailable.
+products:
+  - cloudflare-wallets
+sidebar:
+  order: 4
+---
+
+A wallet handle must satisfy every rule on this page before it can be reserved.
+
+## Format rules
+
+Handles follow these rules:
+
+| Rule       | Requirement                                                                    |
+| ---------- | ------------------------------------------------------------------------------ |
+| Length     | 3 to 32 characters                                                             |
+| Characters | Lowercase letters `a` to `z`, digits `0` to `9`, and the hyphen (`-`) only      |
+| Hyphens    | Cannot be the first or last character, and cannot appear twice in a row         |
+| Encoding   | ASCII only. Accented letters, non-Latin scripts, emoji, and spaces are invalid |
+
+## Handles are not case-sensitive
+
+Cloudflare converts a handle to lowercase before checking and storing it. `Example`, `EXAMPLE`, and `example` are the same handle.
+
+Every handle is stored and displayed in lowercase. Capitalization is not part of a handle, so there is no capitalized form of a handle to reserve.
+
+## Reserved handles
+
+Cloudflare holds back a set of handles. These include Cloudflare product, service, and brand names, along with common infrastructure and administrative terms such as `admin`, `api`, `support`, and `www`.
+
+Reserved matching is not limited to exact matches. A handle that **contains** a reserved word is also unavailable. For example, a handle containing `cloudflare` or a Cloudflare product name is rejected even when it is combined with other words.
+
+## Filtered handles
+
+Cloudflare rejects handles that appear to contain offensive terms. The filter also inspects common character substitutions, so a term disguised with digits or symbols is still caught.
+
+The filter matches on substrings, so an ordinary word or a personal name that happens to contain a filtered term can be rejected. Cloudflare refines the filter over time. If a handle is rejected, reserve a variation instead.
+
+## Why a handle may be unavailable
+
+A handle can be unavailable for one of the following reasons:
+
+| Outcome            | Cause                                                                          |
+| ------------------ | ------------------------------------------------------------------------------ |
+| Invalid            | The handle breaks one of the format rules                                      |
+| Reserved           | Cloudflare holds the handle, or the handle contains a reserved word            |
+| Not allowed        | The handle matched the offensive term filter                                   |
+| Already taken      | Another Cloudflare account reserved the handle first                           |
+| Account has a name | Your account already reserved a handle. Each account can reserve only one name |
+
+Cloudflare does not publish which account holds a reserved handle.
+
+## Related
+
+- [Wallet handles](/cloudflare-wallets/wallet-handles/)
+- [Reserve a wallet handle](/cloudflare-wallets/reserve-a-wallet-handle/)

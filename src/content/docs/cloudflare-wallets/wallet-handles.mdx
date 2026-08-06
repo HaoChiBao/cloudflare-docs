@@ -1,0 +1,81 @@
+---
+title: Wallet handles
+pcx_content_type: concept
+description: Understand how Cloudflare Wallets handles are allocated, how they attach to a Cloudflare account, and what a reservation does and does not include.
+products:
+  - cloudflare-wallets
+sidebar:
+  order: 2
+---
+
+A wallet handle is a short, human-readable name that identifies the Cloudflare account behind a wallet. Merchants and agents can use a handle to recognize who they are transacting with, instead of relying on a key or an address.
+
+Handles are reserved at [cloudflare.pay](https://cloudflare.pay/). Reserving a handle holds the name against your Cloudflare account. It does not create a wallet, hold funds, or move money.
+
+## Allocation
+
+Handles are allocated on a first come, first served basis. Cloudflare does not hold a handle for a business in advance, and does not arbitrate between accounts that want the same name.
+
+Reserving a handle does not grant trademark rights, and it does not establish ownership of a name. Trademark holders can report a handle for review. For more information, refer to [Trademark reports](#trademark-reports).
+
+## Reservations are final
+
+A reservation is permanent. Cloudflare does not change, release, transfer, or reassign a handle after it is reserved.
+
+This applies to every variation of the request:
+
+- Reserving a different handle in place of the one you hold
+- Releasing a handle so that another account can reserve it
+- Moving a handle to a different Cloudflare account
+- Combining handles held by several accounts onto one account
+- Reserving a second handle on an account that already holds one
+
+Choose your handle carefully before you confirm it.
+
+## Handles attach to an account
+
+A handle is reserved against a **Cloudflare account**. It is not attached to your email address, your user, or your login method.
+
+Each Cloudflare account can hold one handle. If your account already holds a handle, `cloudflare.pay` reports the existing name rather than reserving another.
+
+If your user belongs to more than one Cloudflare account, the handle attaches to one of those accounts, and it may not be the account you intended. Confirm the account before you reserve.
+
+## Actions that do not release a handle
+
+Two actions are commonly mistaken for a way to give up a handle. Neither one releases the reservation, and neither one makes the name available to anyone else.
+
+### Revoking the connected application
+
+The Cloudflare dashboard lists **Cloudflare Wallet Launch Site** under **Manage Account** > **Access Management** > **Connected Applications** once you have reserved a handle. Revoking it removes the access you granted to the reservation site.
+
+The handle stays reserved against your account.
+
+### Deleting your Cloudflare account
+
+Deleting the Cloudflare account that holds a handle does not release the handle.
+
+Creating a new account with the same email address does not restore the reservation. A new account has a new account ID, so the handle stays attached to the account that reserved it, and the new account holds no handle.
+
+## Trademark reports
+
+Cloudflare reviews reports that a reserved handle infringes a trademark. Submit these through the [Cloudflare abuse form](https://abuse.cloudflare.com/), which routes the report to the Cloudflare Trust and Safety team.
+
+Cloudflare only acknowledges abuse reports from trademark holders or their legally authorized representatives. For the information a trademark report must contain, refer to [Complaint types](/fundamentals/reference/report-abuse/complaint-types/).
+
+Trademark review is the only route by which a reserved handle is reconsidered. Cloudflare Support cannot change, release, or transfer a handle.
+
+## What a reservation includes
+
+A reserved handle:
+
+- Holds the name against your Cloudflare account
+- Publishes a page at `HANDLE.cloudflare.pay` showing only the handle
+- Registers your account to be notified when Cloudflare Wallets becomes available
+
+The handle page does not publish your account name, account ID, email address, or any other account information. Cloudflare does not publish which account holds a reserved handle.
+
+## Related
+
+- [Reserve a wallet handle](/cloudflare-wallets/reserve-a-wallet-handle/)
+- [Wallet handle requirements](/cloudflare-wallets/wallet-handle-requirements/)
+- [Cloudflare Wallets FAQ](/cloudflare-wallets/faq/)

@@ -1,0 +1,67 @@
+---
+title: Reserve a wallet handle
+pcx_content_type: how-to
+description: Reserve a Cloudflare Wallets handle for your account at cloudflare.pay, and confirm which Cloudflare account the handle attaches to.
+products:
+  - cloudflare-wallets
+sidebar:
+  order: 3
+---
+
+import { Steps } from "~/components";
+
+Reserving a wallet handle holds a human-readable name against your Cloudflare account, ready for when Cloudflare Wallets becomes available.
+
+:::caution
+
+Handles are allocated first come, first served, and a reservation is permanent. Cloudflare does not change, release, or transfer a handle after it is reserved. For more information, refer to [Wallet handles](/cloudflare-wallets/wallet-handles/).
+
+:::
+
+## Prerequisites
+
+You need a Cloudflare account. Handle reservation is open on every plan, including Free. To create an account, refer to [Create a Cloudflare account](/fundamentals/account/create-account/).
+
+Confirm which Cloudflare account you want the handle attached to. If your user belongs to more than one account, sign out of the Cloudflare dashboard first, then sign in to the account you intend to use.
+
+## Reserve a handle
+
+<Steps>
+
+1. Go to [cloudflare.pay](https://cloudflare.pay/).
+
+2. Enter the handle you want. The site checks availability as you type and reports whether the handle is available, already taken, reserved, or invalid.
+
+   For the rules that determine whether a handle is accepted, refer to [Wallet handle requirements](/cloudflare-wallets/wallet-handle-requirements/).
+
+3. Select the option to reserve the handle. Cloudflare redirects you to `dash.cloudflare.com` to sign in.
+
+4. Sign in to Cloudflare, then review and grant the requested access. The application is named **Cloudflare Wallet Launch Site**.
+
+5. Confirm the reservation. Cloudflare returns you to `cloudflare.pay` and shows the reserved handle.
+
+</Steps>
+
+A reserved handle publishes a page at `HANDLE.cloudflare.pay` that shows only the handle. Your account name, account ID, and email address are not published.
+
+## Confirm you are on the genuine site
+
+`cloudflare.pay` is operated by Cloudflare. Because it is a different domain from `cloudflare.com`, and because it asks you to sign in to Cloudflare, it is reasonable to treat it with suspicion. Check the following before you authorize anything:
+
+- **You are never asked for your Cloudflare password on `cloudflare.pay`.** Reserving a handle sends you to `dash.cloudflare.com`, and you sign in there. Confirm the address bar reads `dash.cloudflare.com` before entering credentials.
+- **The authorization screen is a standard Cloudflare OAuth consent screen** hosted on `dash.cloudflare.com`, listing the application name and the access it requests.
+- **The requested access is read-only.** The application reads your user details, your account memberships, and your account settings. It cannot change your configuration, read your zones, or access billing or payment methods.
+
+If a site asks for your Cloudflare password, an API token, or a two-factor code on any domain other than `dash.cloudflare.com`, do not enter it.
+
+## Review the authorization
+
+To review the access you granted, go to the [Cloudflare dashboard](https://dash.cloudflare.com/), then select **Manage Account** > **Access Management** > **Connected Applications**. The **Cloudflare Wallet Launch Site** entry appears there once you have reserved a handle.
+
+Revoking the application removes its access to your account. It does not release your reserved handle. For more information, refer to [Actions that do not release a handle](/cloudflare-wallets/wallet-handles/#actions-that-do-not-release-a-handle).
+
+## Related
+
+- [Wallet handles](/cloudflare-wallets/wallet-handles/)
+- [Wallet handle requirements](/cloudflare-wallets/wallet-handle-requirements/)
+- [Cloudflare Wallets FAQ](/cloudflare-wallets/faq/)
