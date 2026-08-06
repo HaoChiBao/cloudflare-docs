@@ -46,15 +46,15 @@ Cloudflare consolidates these to `{hostVar1}.example.com/api/v1/users/{var1}`.
 
 For more technical details, refer to the [blog post](https://blog.cloudflare.com/ml-api-discovery-and-schema-learning/).
 
-### Inbox view
+### Discovery view
 
-API Shield first catalogs your discovered API endpoints in an inbox-style view. From API Discovery, you can save endpoints to [Endpoint Management](/api-shield/management-and-monitoring/) or ignore endpoints to remove them from view.
+Web Assets continuously catalogs discovered API endpoints as candidate operations in the [Operations inventory](/security/web-assets/manage-operations/). An operation identifies an endpoint by HTTP method, hostname pattern, and path pattern.
 
-Save all discovered API endpoints to Endpoint Management. Ignore any false positives by selecting **Save** or **Ignore** on each line, or use bulk selection.
+Use the **Discovery** tab to review candidate operations. Select **Save** to move a candidate operation into the `full` state, or select **Ignore** to remove a false positive from view. You can also use bulk selection.
 
 To get started, search for `var1` in the search box to find all endpoints with path variables and save them first. You can examine endpoints without path variables later.
 
-Adding endpoints to Endpoint Management unlocks additional [security](/api-shield/security/), [visibility](/api-shield/management-and-monitoring/#endpoint-analysis), and [management](/api-shield/management-and-monitoring/) features.
+Moving operations into the `full` state unlocks features that require a reviewed API endpoint, including additional [security](/api-shield/security/), [visibility](/api-shield/management-and-monitoring/endpoint-management/#endpoint-analysis), and [management](/security/web-assets/manage-operations/) capabilities.
 
 To restore any errantly ignored endpoints, you can filter by **Ignored** and select **Restore**.
 
