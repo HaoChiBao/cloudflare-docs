@@ -165,11 +165,10 @@ Webhook delivery is best-effort and is not retried. The destination must be an H
 
 Use the optional `webhookFormat` field (also on `options`) to control the shape of the webhook body. The default is `raw`.
 
-| Format      | Description                                                                                                                        |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `raw`       | Sends the payload as-is (default).                                                                                                 |
-| `chat`      | Wraps the payload in `{ "text": "<prettified JSON>" }`, matching the incoming-webhook body accepted by Google Chat and Slack.      |
-| `replicate` | Sends the raw payload and adds an `X-Webhook-Signature` header (HMAC-SHA256 of the run ID) so you can verify the request's origin. |
+| Format | Description                                                                                                                   |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| `raw`  | Sends the payload as-is (default).                                                                                            |
+| `chat` | Wraps the payload in `{ "text": "<prettified JSON>" }`, matching the incoming-webhook body accepted by Google Chat and Slack. |
 
 ## `/ai/v1/chat/completions` — OpenAI compatible
 
