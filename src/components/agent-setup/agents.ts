@@ -7,11 +7,10 @@ export const AGENTS: AgentData[] = [
 		slug: "claude-code",
 		icon: "claude",
 		description:
-			"Terminal-based coding agent that understands your codebase, runs commands, edits files, and manages git. Made by Anthropic.",
+			"Coding agent available in the terminal, Claude desktop app, and supported editors. It understands your codebase, runs commands, and edits files.",
 		capabilities: {
-			ide: false,
 			terminal: true,
-			standalone: true,
+			desktop: true,
 			cloud: true,
 			extension: true,
 			open_source: false,
@@ -25,6 +24,9 @@ export const AGENTS: AgentData[] = [
 		pricing_model: "subscription",
 		model_flexibility: "locked",
 		context_approach: "project_memory",
+		workflow_links: {
+			desktop: "/agent-setup/claude-code/?view=desktop",
+		},
 		links: {
 			skills: "https://github.com/cloudflare/skills",
 			mcp_server: "https://github.com/cloudflare/mcp",
@@ -39,11 +41,10 @@ export const AGENTS: AgentData[] = [
 		slug: "codex",
 		icon: "codex",
 		description:
-			"OpenAI coding agent available as a terminal CLI and desktop app. It reads and writes files, runs commands, and browses the web in a sandbox.",
+			"OpenAI coding agent available through Codex CLI and Codex in the ChatGPT desktop app. It reads and writes files, runs commands, and browses the web in a sandbox.",
 		capabilities: {
-			ide: false,
 			terminal: true,
-			standalone: true,
+			desktop: true,
 			cloud: true,
 			extension: true,
 			open_source: true,
@@ -57,6 +58,9 @@ export const AGENTS: AgentData[] = [
 		pricing_model: "hybrid",
 		model_flexibility: "locked",
 		context_approach: "project_memory",
+		workflow_links: {
+			desktop: "/agent-setup/codex/?view=desktop",
+		},
 		links: {
 			skills: "https://github.com/cloudflare/skills",
 			mcp_server: "https://github.com/cloudflare/mcp",
@@ -71,11 +75,10 @@ export const AGENTS: AgentData[] = [
 		slug: "cursor",
 		icon: "cursor",
 		description:
-			"AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.",
+			"AI coding desktop app with multi-file edits, background agents, codebase search, and terminal access. Made by Cursor.",
 		capabilities: {
-			ide: true,
-			terminal: true,
-			standalone: true,
+			terminal: false,
+			desktop: true,
 			cloud: true,
 			extension: false,
 			open_source: false,
@@ -103,24 +106,27 @@ export const AGENTS: AgentData[] = [
 		slug: "github-copilot",
 		icon: "copilot",
 		description:
-			"Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.",
+			"Coding agent available as a desktop app, IDE extension, and CLI with agent sessions and native GitHub integration. Made by GitHub.",
 		capabilities: {
-			ide: false,
 			terminal: true,
-			standalone: false,
+			desktop: true,
 			cloud: true,
 			extension: true,
 			open_source: false,
 		},
 		features: [
-			"Agent mode",
+			"Parallel agent sessions",
 			"Workspace context",
 			"CLI integration",
-			"PR summaries",
+			"Pull request lifecycle",
 		],
 		pricing_model: "subscription",
 		model_flexibility: "multi_provider",
 		context_approach: "indexed_codebase",
+		workflow_links: {
+			terminal: "/agent-setup/github-copilot/?view=terminal",
+			desktop: "/agent-setup/github-copilot/?view=desktop",
+		},
 		links: {
 			skills: "https://github.com/cloudflare/skills",
 			mcp_server: "https://github.com/cloudflare/mcp",
@@ -135,13 +141,12 @@ export const AGENTS: AgentData[] = [
 		slug: "opencode",
 		icon: "opencode",
 		description:
-			"Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.",
+			"Open-source coding agent available as a terminal interface and desktop app. It works with 75+ LLMs. Made by Anomaly.",
 		capabilities: {
-			ide: false,
 			terminal: true,
-			standalone: true,
+			desktop: true,
 			cloud: false,
-			extension: true,
+			extension: false,
 			open_source: true,
 		},
 		features: [
@@ -153,6 +158,9 @@ export const AGENTS: AgentData[] = [
 		pricing_model: "byok",
 		model_flexibility: "multi_provider",
 		context_approach: "project_memory",
+		workflow_links: {
+			desktop: "/agent-setup/opencode/?view=desktop",
+		},
 		links: {
 			skills: "https://github.com/cloudflare/skills",
 			mcp_server: "https://github.com/cloudflare/mcp",
@@ -167,11 +175,10 @@ export const AGENTS: AgentData[] = [
 		slug: "windsurf",
 		icon: "windsurf",
 		description:
-			"Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition.",
+			"AI coding desktop app with Cascade context and Flows for multi-step tasks. Made by Cognition.",
 		capabilities: {
-			ide: true,
 			terminal: false,
-			standalone: true,
+			desktop: true,
 			cloud: false,
 			extension: false,
 			open_source: false,
@@ -199,20 +206,19 @@ export const AGENTS: AgentData[] = [
 		slug: "visual-studio-code",
 		icon: "visual-studio-code",
 		description:
-			"Free, open-source code editor with native Model Context Protocol (MCP) client support and Copilot Chat integration. Made by Microsoft.",
+			"Desktop code editor and agent control plane. Its Agents window can run and monitor Copilot, Claude, Codex, local, and cloud agent harnesses.",
 		capabilities: {
-			ide: true,
-			terminal: true,
-			standalone: true,
+			terminal: false,
+			desktop: true,
 			cloud: false,
-			extension: true,
+			extension: false,
 			open_source: true,
 		},
 		features: [
-			"Native MCP client",
-			"Copilot Chat integration",
+			"Multiple agent harnesses",
+			"Agents window",
 			"Terminal integration",
-			"Extension ecosystem",
+			"Native MCP client",
 		],
 		pricing_model: "byok",
 		model_flexibility: "multi_provider",
@@ -233,9 +239,8 @@ export const AGENTS: AgentData[] = [
 		description:
 			"Powerful agent for coding and work. Natively local, with open models in the cloud. By LM Studio.",
 		capabilities: {
-			ide: false,
 			terminal: false,
-			standalone: true,
+			desktop: true,
 			cloud: true,
 			extension: false,
 			open_source: false,

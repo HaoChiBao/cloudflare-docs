@@ -12,23 +12,14 @@ const CODE_MODE_URL = "https://mcp.cloudflare.com/mcp";
 
 const allServers = await getCollection("mcp-servers");
 
-// Code Mode first, then the rest in manifest order
-const servers = [
-	...allServers.filter((s) => s.data.url === CODE_MODE_URL),
-	...allServers.filter((s) => s.data.url !== CODE_MODE_URL),
-];
+// Code Mode provides access to the full API and current documentation.
+const servers = allServers.filter((s) => s.data.url === CODE_MODE_URL);
 
 /**
  * URLs of servers included in the cloudflare/skills plugin bundle
  * (Claude Code, Cursor).
  */
-const BUNDLED = new Set([
-	"https://mcp.cloudflare.com/mcp",
-	"https://docs.mcp.cloudflare.com/mcp",
-	"https://bindings.mcp.cloudflare.com/mcp",
-	"https://builds.mcp.cloudflare.com/mcp",
-	"https://observability.mcp.cloudflare.com/mcp",
-]);
+const BUNDLED = new Set([CODE_MODE_URL]);
 
 const tagBase =
 	"inline-flex items-center rounded-full border px-1.5 py-0.5 text-[0.625rem] font-medium uppercase tracking-wide";

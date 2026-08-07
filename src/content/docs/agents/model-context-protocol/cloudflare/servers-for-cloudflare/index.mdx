@@ -10,7 +10,7 @@ products:
   - agents
 ---
 
-Cloudflare runs a catalog of managed remote MCP servers which you can connect to using OAuth on clients like [Claude](https://modelcontextprotocol.io/quickstart/user), [Windsurf](https://docs.windsurf.com/windsurf/cascade/mcp), our own [AI Playground](https://playground.ai.cloudflare.com/) or any [SDK that supports MCP](https://github.com/cloudflare/agents/tree/main/packages/agents/src/mcp).
+Cloudflare runs a catalog of managed remote MCP servers which you can connect to using OAuth on clients like [Claude](https://modelcontextprotocol.io/quickstart/user), [Windsurf](https://docs.windsurf.com/windsurf/cascade/mcp), our own [AI Playground](https://playground.ai.cloudflare.com/) or any [SDK that supports MCP](https://github.com/cloudflare/agents/tree/main/packages/agents/src/mcp). The Documentation server provides contextual search across the complete Cloudflare Developer Documentation and does not require authentication.
 
 These MCP servers allow your MCP client to read configurations from your account, process information, make suggestions based on data, and even make those suggested changes for you. All of these actions can happen across Cloudflare's many services including application development, security and performance.
 
@@ -52,39 +52,7 @@ For more information, refer to the [Cloudflare MCP repository](https://github.co
 
 ### Install via agent and IDE plugins
 
-You can install the [Cloudflare Skills plugin](https://github.com/cloudflare/skills), which bundles the Cloudflare MCP servers alongside contextual skills and slash commands for building on Cloudflare. The plugin works with any agent that supports the Agent Skills standard, including Claude Code, OpenCode, OpenAI Codex, and Pi.
-
-#### Claude Code
-
-Install using the [plugin marketplace](https://code.claude.com/docs/en/discover-plugins#add-from-github):
-
-```txt
-/plugin marketplace add cloudflare/skills
-```
-
-#### Cursor
-
-Install from the **Cursor Marketplace**, or add manually via **Settings** > **Rules** > **Add Rule** > **Remote Rule (Github)** with `cloudflare/skills`.
-
-#### npx skills
-
-Install using the [`npx skills`](https://skills.sh) CLI:
-
-```sh
-npx skills add https://github.com/cloudflare/skills
-```
-
-#### Clone or copy
-
-Clone the [cloudflare/skills](https://github.com/cloudflare/skills) repository and copy the skill folders into the appropriate directory for your agent:
-
-| Agent        | Skill directory              | Docs                                                                                                 |
-| ------------ | ---------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Claude Code  | `~/.claude/skills/`          | [Claude Code skills](https://code.claude.com/docs/en/skills)                                         |
-| Cursor       | `~/.cursor/skills/`          | [Cursor skills](https://cursor.com/docs/context/skills)                                              |
-| OpenCode     | `~/.config/opencode/skills/` | [OpenCode skills](https://opencode.ai/docs/skills/)                                                  |
-| OpenAI Codex | `~/.codex/skills/`           | [OpenAI Codex skills](https://developers.openai.com/codex/skills/)                                   |
-| Pi           | `~/.pi/agent/skills/`        | [Pi coding agent skills](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent#skills) |
+You can install the [Cloudflare plugin](https://github.com/cloudflare/skills), which bundles the Cloudflare MCP servers alongside contextual skills and slash commands for building on Cloudflare. For more details about installing skills and MCPs across agents, see [Agent setup](/agent-setup/)
 
 ## Product-specific MCP servers
 

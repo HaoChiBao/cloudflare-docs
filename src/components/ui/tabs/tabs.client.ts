@@ -31,12 +31,14 @@ function initTabContainer(container: HTMLElement): () => void {
 
 		panels.forEach((panel, i) => {
 			const label = panel.dataset.nbTabLabel ?? "Tab";
+			const value = panel.dataset.nbTabValue;
 			const btn = document.createElement("button");
 			btn.role = "tab";
 			btn.type = "button";
 			btn.className = TRIGGER_CLASS;
 			btn.textContent = label;
 			btn.setAttribute("data-nb-tabs-trigger", "");
+			if (value) btn.dataset.nbTabValue = value;
 
 			const panelId = `${id}-panel-${i}`;
 			const tabId = `${id}-tab-${i}`;
@@ -62,7 +64,40 @@ function initTabContainer(container: HTMLElement): () => void {
 		sync: syncKey ? { key: `ui-synced-tabs__${syncKey}` } : undefined,
 	});
 
+	const urlParam = container.dataset.nbUrlParam;
+	const triggers = Array.from(
+		container.querySelectorAll<HTMLButtonElement>("[data-nb-tabs-trigger]"),
+	).filter((trigger) => trigger.closest("[data-nb-tabs]") === container);
+	const handleUrlSync = (event: Event) => {
+		if (!urlParam || !(event.currentTarget instanceof HTMLButtonElement))
+			return;
+		const value = event.currentTarget.dataset.nbTabValue;
+		if (!value) return;
+
+		const url = new URL(window.location.href);
+		if (event.currentTarget === triggers[0]) url.searchParams.delete(urlParam);
+		else url.searchParams.set(urlParam, value);
+		window.history.replaceState({}, "", url);
+	};
+
+	triggers.forEach((trigger) =>
+		trigger.addEventListener("click", handleUrlSync),
+	);
+
+	if (urlParam) {
+		const requestedValue = new URLSearchParams(window.location.search).get(
+			urlParam,
+		);
+		const requestedTrigger = triggers.find(
+			(trigger) => trigger.dataset.nbTabValue === requestedValue,
+		);
+		requestedTrigger?.click();
+	}
+
 	return () => {
+		triggers.forEach((trigger) =>
+			trigger.removeEventListener("click", handleUrlSync),
+		);
 		instance.destroy();
 		// Remove synthesized triggers so re-mount doesn't double up.
 		if (synthesize && tablist) {

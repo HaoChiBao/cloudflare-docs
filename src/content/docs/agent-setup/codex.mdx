@@ -1,6 +1,6 @@
 ---
 title: Codex + Cloudflare
-description: "OpenAI coding agent available as a terminal CLI and desktop app. It reads and writes files, runs commands, and browses the web in a sandbox."
+description: "OpenAI coding agent available through Codex CLI and Codex in the ChatGPT desktop app. It reads and writes files, runs commands, and browses the web in a sandbox."
 template: splash
 pcx_content_type: how-to
 products:
@@ -24,31 +24,43 @@ import OtherAgents from "~/components/agent-setup/OtherAgents.astro";
 
 ## Quick start
 
-<Tabs>
-	<TabItem label="Terminal">
+<Tabs urlParam="view">
+	<TabItem label="Terminal" value="terminal">
 		<Steps>
 			1. **Install Codex**
 
-				Install the Codex CLI. macOS and Linux are fully supported; use WSL2 on Windows. For Homebrew or other install methods, see the [Codex CLI setup guide](https://developers.openai.com/codex/cli/).
+				Install the Codex CLI with the native installer.
 
-				```bash
-				npm install -g @openai/codex
+				<Tabs>
+					<TabItem label="macOS and Linux">
+						```sh
+						curl -fsSL https://chatgpt.com/codex/install.sh | sh
+						```
+					</TabItem>
+					<TabItem label="Windows">
+						```powershell
+						irm https://chatgpt.com/codex/install.ps1 | iex
+						```
+					</TabItem>
+				</Tabs>
+
+				For Homebrew or other install methods, see the [Codex CLI setup guide](https://developers.openai.com/codex/cli/).
+
+			2. **Install the Cloudflare plugin**
+
+				Install the official Cloudflare plugin before starting Codex. This installs Cloudflare Skills and registers the Cloudflare MCP server.
+
+				```sh
+				codex plugin marketplace add cloudflare/skills
+				codex plugin add cloudflare@cloudflare
 				```
 
-			2. **Launch Codex in your project**
+			3. **Launch Codex in your project**
 
 				Start Codex from the root of your project, where `wrangler.jsonc` lives (if it already exists).
 
-				```bash
+				```sh
 				codex
-				```
-
-			3. **Install the Cloudflare plugin**
-
-				Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This installs Cloudflare Skills and registers the Cloudflare MCP servers.
-
-				```txt
-				/plugins
 				```
 
 			4. **Try a prompt**
@@ -58,17 +70,31 @@ import OtherAgents from "~/components/agent-setup/OtherAgents.astro";
 				<RandomPrompt />
 		</Steps>
 	</TabItem>
-	<TabItem label="Desktop">
+	<TabItem label="ChatGPT desktop app" value="desktop">
 		<Steps>
-			1. **Download Codex**
+			1. **Install the ChatGPT desktop app**
 
-				Follow the download instructions for your operating system at [developers.openai.com/codex/app](https://developers.openai.com/codex/app).
+				Follow the [ChatGPT desktop app setup guide](https://learn.chatgpt.com/docs/app) for macOS or Windows. Open the app and sign in to your ChatGPT account.
 
-			2. **Install the Cloudflare plugin**
+			2. **Open Codex**
 
-				In the Codex app, go to **Plugins** and install **Cloudflare**.
+				In the app, open the ChatGPT dropdown and select **Codex**.
 
-				![Install the Cloudflare plugin in the Codex desktop app.](~/assets/images/agent-setup/codex-desktop.png)
+			3. **Install the Cloudflare plugin**
+
+				In Codex, open **Plugins**. Search for **Cloudflare**, open the plugin details, and select the plus (+) button.
+
+				![Cloudflare plugin details in the Plugins Directory in Codex.](~/assets/images/agent-setup/codex-desktop.png)
+
+			4. **Start a new chat**
+
+				Open your project and start a new chat. The Cloudflare plugin becomes available in new chats, so you do not need to restart the app.
+
+			5. **Try a prompt**
+
+				For example:
+
+				<RandomPrompt />
 		</Steps>
 	</TabItem>
 </Tabs>
@@ -85,7 +111,7 @@ import OtherAgents from "~/components/agent-setup/OtherAgents.astro";
 
 <TipsList>
 
-- The Cloudflare API MCP server uses Code Mode — Codex writes JavaScript against a typed API to reach any of 2,500+ endpoints in ~1,000 tokens.
+- The Cloudflare API MCP server uses Code Mode — Codex writes JavaScript against a typed API to reach any of 2,500+ endpoints and current developer documentation in approximately 1,100 tokens.
 - Try the `/cloudflare:build-agent` slash command to scaffold a complete Agents SDK project, or `/cloudflare:build-mcp` for a remote MCP server.
 
 </TipsList>
@@ -126,8 +152,8 @@ import OtherAgents from "~/components/agent-setup/OtherAgents.astro";
 		Run `codex mcp list` to confirm it appears, then use `/mcp` inside the Codex TUI to check its status.
 	</TroubleshootingItem>
 	<TroubleshootingItem issue="Getting outdated information about Cloudflare products">
-		Enable the <a href="https://github.com/cloudflare/mcp-server-cloudflare" target="_blank" rel="noopener noreferrer">Cloudflare docs MCP server</a> so the agent can fetch
-		current documentation at runtime. If you prefer not to use the MCP server, point
+		Enable the <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer">Cloudflare API MCP server</a> so the agent can fetch
+		current documentation at runtime. You can also point
 		the agent directly at <a href="/llms.txt">developers.cloudflare.com/llms.txt</a> for
 		a directory of every product, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code>
 		for a product-specific index.

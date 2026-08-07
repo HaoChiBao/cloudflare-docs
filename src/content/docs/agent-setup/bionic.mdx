@@ -89,9 +89,9 @@ import OtherAgents from "~/components/agent-setup/OtherAgents.astro";
 	</FAQItem>
 	<FAQItem question="What does Code Mode mean for MCP?">
 		Code Mode is how the Cloudflare API MCP server fits all 2,500+ API endpoints
-		into about 1,000 tokens. Instead of exposing every endpoint as a separate tool,
-		it exposes <code>search()</code> and <code>execute()</code>. Bionic writes
-		JavaScript to call them. For more information, refer to
+		into about 1,100 tokens. It exposes <code>docs</code>, <code>search()</code>, and
+		<code>execute()</code>. Bionic writes JavaScript to call the API tools. For more
+		information, refer to
 		<a href="https://blog.cloudflare.com/code-mode-mcp/">Code Mode</a>.
 	</FAQItem>
 </FAQList>
@@ -104,9 +104,8 @@ import OtherAgents from "~/components/agent-setup/OtherAgents.astro";
 		Remove and re-add the remote MCP server in Bionic, then try connecting again.
 	</TroubleshootingItem>
 	<TroubleshootingItem issue="Getting outdated information about Cloudflare products">
-		Add the Cloudflare documentation MCP server at
-		<code>https://docs.mcp.cloudflare.com/mcp</code> so Bionic can retrieve current
-		documentation. Alternatively, point Bionic to
+		Enable the <a href="https://github.com/cloudflare/mcp" target="_blank" rel="noopener noreferrer">Cloudflare API MCP server</a> so Bionic can retrieve current
+		documentation. You can also point Bionic to
 		<a href="/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of
 		all products, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code>
 		for a product-specific index.

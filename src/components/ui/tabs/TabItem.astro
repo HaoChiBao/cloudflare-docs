@@ -10,9 +10,11 @@ import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"div"> {
 	label: string;
+	/** Stable value used for URL-selected tabs. */
+	value?: string;
 }
 
-const { label, class: className, ...attrs } = Astro.props;
+const { label, value, class: className, ...attrs } = Astro.props;
 
 if (!label) {
 	throw new Error("Missing required `label` prop on `<TabItem>` component.");
@@ -23,6 +25,7 @@ if (!label) {
 	role="tabpanel"
 	data-nb-tabs-content
 	data-nb-tab-label={label}
+	data-nb-tab-value={value}
 	class={cn(className)}
 	{...attrs}
 >
