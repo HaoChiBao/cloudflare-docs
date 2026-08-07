@@ -46,26 +46,24 @@ Cloudflare consolidates these to `{hostVar1}.example.com/api/v1/users/{var1}`.
 
 For more technical details, refer to the [blog post](https://blog.cloudflare.com/ml-api-discovery-and-schema-learning/).
 
-### Discovery view
+### Discovered operations
 
-Web Assets continuously catalogs discovered API endpoints as candidate operations in the [Operations inventory](/security/web-assets/manage-operations/). An operation identifies an endpoint by HTTP method, hostname pattern, and path pattern.
+Web Assets adds discovered API endpoints to the operation inventory as candidate operations. Candidate operations provide context for matching, logging, detections, and rules before you manually review them.
 
-Use the **Discovery** tab to review candidate operations. Select **Save** to move a candidate operation into the `full` state, or select **Ignore** to remove a false positive from view. You can also use bulk selection.
+You do not need to promote every discovered operation. Promote an operation to move it to the `full` state and start profile learning. Full operations support persisted API profiles, risk findings, and protections that require a known API endpoint.
 
-To get started, search for `var1` in the search box to find all endpoints with path variables and save them first. You can examine endpoints without path variables later.
+To promote a discovered operation:
 
-Moving operations into the `full` state unlocks features that require a reviewed API endpoint, including additional [security](/api-shield/security/), [visibility](/api-shield/management-and-monitoring/endpoint-management/#endpoint-analysis), and [management](/security/web-assets/manage-operations/) capabilities.
+<Steps>
+1. In the Cloudflare dashboard, go to the **Web Assets** page.
 
-To restore any errantly ignored endpoints, you can filter by **Ignored** and select **Restore**.
+   <DashButton url="/?to=/:account/:zone/security/web-assets" />
+2. Go to the **Operations** tab.
+3. Open the row actions for a candidate or shadow operation.
+4. Select **Learn profile**.
+</Steps>
 
-API Discovery is an ongoing process. Check back regularly for new results — a badge in the dashboard shows how many endpoints need review.
-
-The **Needs Review** and **Ignored** counts may change over time as your API or traffic patterns change. Discovery results that are not saved can disappear.
-
-:::note
-
-Cloudflare will use your feedback on ignored endpoints to improve the API Discovery machine learning model in a future release.
-:::
+Cloudflare moves the operation to the `full` state. The row action then changes to **Profile learned**. For more information, refer to [Promote an operation](/security/web-assets/manage-operations/#promote-an-operation).
 
 ### Machine learning-based discovery
 
